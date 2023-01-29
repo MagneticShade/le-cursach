@@ -1,12 +1,16 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 #wrapper{
     display: flex;
     flex-direction:column;
     align-items: center;
 }
+
+/* Эаголовок начало */
+
 header{
     display:flex;
     width: 100%;
@@ -30,8 +34,66 @@ a{
     font-size:20px;
     font-family: "Inter",serif ;
 }
+
+/* Эаголовок конец */
+
 #first_screen{
+    width: 100vw;
+    height: 85vh;
+    padding-top:10%;
+    padding-bottom: 2%;
     background-image: url("../images/background.png");
-    width: 100%;
-    height: 820px;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    flex-direction: column;
+}
+#first_screen_align{
+    margin-right: 10%;
+    height: 40vh ;
+    width: 30vw;
+
+
+}
+
+#order{
+    width: 445px;
+    height: 70px;
+    font-size: 24px;
+    background-color: rgb(13,96,135,0.8);
+    border: none;
+    margin-bottom: 5%;
+}
+
+#timer{
+    width: 445px;
+    text-align: center;
+}
+
+#info>h1{
+    margin-bottom: 10%;
+}
+#info>p{
+    max-width:520px ;
+}
+#info{
+    margin-bottom: 5%;
+}
+h1{
+    font-size: 40px;
+}
+h2{
+    font-size: 30px;
+}
+p{
+    font-size: 24px;
+}
+
+h1,h2,p,#order{
+    color: #E0E0E0;
+}
+
+#next_screen{
+    align-self: center;
 }
