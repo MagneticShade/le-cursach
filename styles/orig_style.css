@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 #wrapper{
+    overflow: hidden;
+    padding: 0;
     display: flex;
     flex-direction:column;
     align-items: center;
@@ -35,9 +37,10 @@ a{
     font-family: "Inter",serif ;
 }
 
-/* Эаголовок конец */
+/* Первый экран*/
 
 #first_screen{
+    box-sizing: border-box;
     width: 100vw;
     height: 85vh;
     padding-top:10%;
@@ -53,7 +56,6 @@ a{
     margin-right: 10%;
     height: 40vh ;
     width: 30vw;
-
 
 }
 
@@ -96,4 +98,95 @@ h1,h2,p,#order{
 
 #next_screen{
     align-self: center;
+}
+/*слайдер*/
+#slider{
+    width: 100%;
+    height: 920px;
+    display: flex;
+    position: relative;
+    background-color: aqua;
+}
+#warlock{
+    background-size: contain;
+    background-position: left;
+    background-repeat:no-repeat ;
+    background-image: url("/images/warlock.png");
+    position: absolute;
+    width: 100%;
+    height: 920px;
+    background-color: yellow;
+    z-index: 0;
+    clip-path: polygon(0% 0%, 25% 0%, 10% 100%, 0% 100%);
+    transition: ease-in-out 0.15s, z-index 0s 0.15s;
+
+}
+#hunter{
+    background-size: contain;
+    background-position: center;
+    background-repeat:no-repeat ;
+    background-image:url("/images/hunter.jpg");
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 920px;
+    background-color: blue;
+    clip-path: polygon(25% 0%, 90% 0%, 75% 100%, 10% 100%);
+    transition: ease-in-out 0.15s, z-index 0s 0.15s;
+
+
+}
+#titan{
+    background-position: right;
+    background-image: url("/images/titan.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: 0;
+    background-color: red;
+    position: absolute;
+    width: 100%;
+    height: 920px;
+    clip-path: polygon(90% 0%, 100% 0%, 100% 100%, 75% 100%);
+    transition: ease-in-out 0.15s, z-index 0s 0.15s;
+}
+
+/*#warlock:hover{*/
+/*    z-index: 2;*/
+/*    clip-path: polygon(0% 0%, 70% 0%, 55% 100%, 0% 100%);*/
+
+/*}*/
+/*#warlock:hover~#hunter{*/
+/*    clip-path: polygon(70% 0%, 90% 0%, 75% 100%, 55% 100%);*/
+/*}*/
+/*#warlock:hover~#titan{*/
+/*    clip-path: polygon(90% 0%, 100% 0%, 100% 100%, 75% 100%);*/
+/*}*/
+/*#hunter:hover{*/
+/*    z-index: 2;*/
+/*    clip-path: polygon(25% 0%, 90% 0%, 75% 100%, 10% 100%);*/
+/*}*/
+/*#hunter:hover ~#warlock{*/
+/*    clip-path: polygon(0% 0%, 25% 0%, 10% 100%, 0% 100%);*/
+/*    background-color: #151517;*/
+/*}*/
+/*#hunter:hover ~ #titan{*/
+/*    clip-path: polygon(90% 0%, 100% 0%, 100% 100%, 75% 100%);*/
+
+/*}*/
+/*#titan:hover{*/
+/*    z-index:2;*/
+/*    clip-path: polygon(55% 0%, 100% 0%, 100% 100%, 40% 100%);*/
+/*}*/
+/*#titan:hover~#hunter{*/
+/*    clip-path: polygon(70% 0%, 90% 0%, 75% 100%, 55% 100%);*/
+
+/*}*/
+/*#titan:hover~#warlock{*/
+/*    clip-path: polygon(0% 0%, 25% 0%, 10% 100%, 0% 100%);*/
+
+#titan:not(:hover){
+    clip-path: polygon(90% 0%, 100% 0%, 100% 100%, 75% 100%);
+}
+#warlock:not(:hover){
+    clip-path: polygon(0% 0%, 25% 0%, 10% 100%, 0% 100%);
 }
