@@ -100,93 +100,62 @@ h1,h2,p,#order{
     align-self: center;
 }
 /*слайдер*/
+#block2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 #slider{
-    width: 100%;
-    height: 920px;
+    width: 80vw;
+    height: 65vh;
     display: flex;
     position: relative;
     background-color: aqua;
 }
 #warlock{
-    background-size: contain;
+    background-size: 70% 100%;
     background-position: left;
     background-repeat:no-repeat ;
-    background-image: url("/images/warlock.png");
+    /*background-image: url("/images/warlock.png");*/
     position: absolute;
-    width: 100%;
-    height: 920px;
+    width: inherit;
+    height: inherit;
     background-color: yellow;
     z-index: 0;
-    clip-path: polygon(0% 0%, 25% 0%, 10% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 15% 0%, 5% 100%, 0% 100%);
     transition: ease-in-out 0.15s, z-index 0s 0.15s;
 
 }
+.warlock_static{
+    z-index: 2;
+    clip-path: polygon(0% 0%, 80% 0%, 70% 100%, 0% 100%);
+}
 #hunter{
-    background-size: contain;
     background-position: center;
     background-repeat:no-repeat ;
-    background-image:url("/images/hunter.jpg");
-    z-index: 1;
+    background-size: 90% 100%;
+    /*background-image:url("../images/hunter.png");*/
     position: absolute;
-    width: 100%;
-    height: 920px;
+    width: inherit;
+    height: inherit;
     background-color: blue;
-    clip-path: polygon(25% 0%, 90% 0%, 75% 100%, 10% 100%);
+    clip-path:polygon(15% 0%, 95% 0%, 85% 100%, 5% 100%);
     transition: ease-in-out 0.15s, z-index 0s 0.15s;
 
 
 }
 #titan{
     background-position: right;
-    background-image: url("/images/titan.jpg");
+    /*background-image: url("../images/titan.png");*/
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 70% 100%;
     right: 0;
     background-color: red;
     position: absolute;
-    width: 100%;
-    height: 920px;
-    clip-path: polygon(90% 0%, 100% 0%, 100% 100%, 75% 100%);
+    width: inherit;
+    height: inherit;
+    clip-path: polygon(95% 0%, 100% 0%, 100% 100%, 85% 100%);
     transition: ease-in-out 0.15s, z-index 0s 0.15s;
 }
 
-/*#warlock:hover{*/
-/*    z-index: 2;*/
-/*    clip-path: polygon(0% 0%, 70% 0%, 55% 100%, 0% 100%);*/
-
-/*}*/
-/*#warlock:hover~#hunter{*/
-/*    clip-path: polygon(70% 0%, 90% 0%, 75% 100%, 55% 100%);*/
-/*}*/
-/*#warlock:hover~#titan{*/
-/*    clip-path: polygon(90% 0%, 100% 0%, 100% 100%, 75% 100%);*/
-/*}*/
-/*#hunter:hover{*/
-/*    z-index: 2;*/
-/*    clip-path: polygon(25% 0%, 90% 0%, 75% 100%, 10% 100%);*/
-/*}*/
-/*#hunter:hover ~#warlock{*/
-/*    clip-path: polygon(0% 0%, 25% 0%, 10% 100%, 0% 100%);*/
-/*    background-color: #151517;*/
-/*}*/
-/*#hunter:hover ~ #titan{*/
-/*    clip-path: polygon(90% 0%, 100% 0%, 100% 100%, 75% 100%);*/
-
-/*}*/
-/*#titan:hover{*/
-/*    z-index:2;*/
-/*    clip-path: polygon(55% 0%, 100% 0%, 100% 100%, 40% 100%);*/
-/*}*/
-/*#titan:hover~#hunter{*/
-/*    clip-path: polygon(70% 0%, 90% 0%, 75% 100%, 55% 100%);*/
-
-/*}*/
-/*#titan:hover~#warlock{*/
-/*    clip-path: polygon(0% 0%, 25% 0%, 10% 100%, 0% 100%);*/
-
-#titan:not(:hover){
-    clip-path: polygon(90% 0%, 100% 0%, 100% 100%, 75% 100%);
-}
-#warlock:not(:hover){
-    clip-path: polygon(0% 0%, 25% 0%, 10% 100%, 0% 100%);
-}
