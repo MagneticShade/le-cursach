@@ -2,7 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: auto;
 }
+
+html{
+    scroll-behavior: smooth;
+}
+
 #wrapper{
     overflow: hidden;
     padding: 0;
@@ -10,6 +16,7 @@
     flex-direction:column;
     align-items: center;
 }
+
 
 /* Эаголовок начало */
 
@@ -40,23 +47,34 @@ a{
 /* Первый экран*/
 
 #first_screen{
+    position: relative;
     box-sizing: border-box;
     width: 100vw;
     height: 85vh;
     padding-top:10%;
     padding-bottom: 2%;
-    background-image: url("../images/background.png");
     background-size: cover;
     display: flex;
-    align-items: end;
     justify-content: space-between;
     flex-direction: column;
 }
+#main_video{
+    box-sizing: border-box;
+    overflow:hidden ;
+    width: 100vw;
+    height: 85vh;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
 #first_screen_align{
-    margin-right: 10%;
+    margin-left: 10%;
     height: 40vh ;
     width: 30vw;
-
 }
 
 #order{
@@ -104,11 +122,10 @@ h1,h2,p,#order{
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 #slider{
-    width: 80vw;
-    height: 65vh;
+    width: 100vw;
+    height: 85vh;
     display: flex;
     position: relative;
     background-color: aqua;
@@ -117,14 +134,14 @@ h1,h2,p,#order{
     background-size: 70% 100%;
     background-position: left;
     background-repeat:no-repeat ;
-    /*background-image: url("/images/warlock.png");*/
+
     position: absolute;
     width: inherit;
     height: inherit;
     background-color: yellow;
     z-index: 0;
     clip-path: polygon(0% 0%, 15% 0%, 5% 100%, 0% 100%);
-    transition: ease-in-out 0.15s, z-index 0s 0.15s;
+    /*transition: ease-in-out 0.15s, z-index 0s 0.15s;*/
 
 }
 .warlock_static{
@@ -141,7 +158,7 @@ h1,h2,p,#order{
     height: inherit;
     background-color: blue;
     clip-path:polygon(15% 0%, 95% 0%, 85% 100%, 5% 100%);
-    transition: ease-in-out 0.15s, z-index 0s 0.15s;
+    /*transition: ease-in-out 0.15s, z-index 0s 0.15s;*/
 
 
 }
@@ -156,6 +173,6 @@ h1,h2,p,#order{
     width: inherit;
     height: inherit;
     clip-path: polygon(95% 0%, 100% 0%, 100% 100%, 85% 100%);
-    transition: ease-in-out 0.15s, z-index 0s 0.15s;
+    /*transition: ease-in-out 0.15s, z-index 0s 0.15s;*/
 }
 
