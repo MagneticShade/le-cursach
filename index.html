@@ -3,9 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>DESTINY 2</title>
+    <link rel="icon" type="image/icon" href="images/favicon2.png"/>
     <link rel="stylesheet" href="styles/orig_style.css">
-
+    <script src="scripts/libs/node_modules/animejs/lib/anime.min.js"></script>
 
 </head>
 <body>
@@ -20,14 +21,14 @@
             <img src="images/logo.png" alt="">
         </div>
 
-        <div id="chapters">
+        <nav id="chapters">
             <a href="">ГЛАВНАЯ</a>
             <a href="">О ПРОДУКТЕ</a>
             <a href="">ПРЕИМУЩЕСТВА</a>
             <a href="">ОБРАТНАЯ СВЯЗЬ</a>
             <a href="">916-222-2259</a>
             <a id="account" href=""><img src="images/account.png" alt=""></a>
-        </div>
+        </nav>
 
     </header>
 
@@ -39,34 +40,85 @@
         <div id="first_screen_align">
 
              <div id="info">
-                 <h1>DESTINY 2 BEYOND LIGHT</h1>
-                 <p>Спустя семь лет в Destiny мы оказались на пороге приключения, непохожего ни на одно из тех, с которыми мы имели дело раньше</p>
+                 <h1>DESTINY2</h1>
+                 <h2>ЛУЧШИЙ ЛУТЕР-ШУТЕР 2023</h2>
              </div>
 
             <a href=""> <button id="order">ПРЕДЗАКАЗАТЬ</button> </a>
 
             <div id="timer">
                 <h2>ДО ВЫХОДА ОСТАЛОСЬ</h2>
-                <h1>00:00:00</h1>
+                <h1 id="timer_field">00:00:00:00</h1>
             </div>
 
         </div>
 
         <div id="next_screen">
-            <a href="#block2"><img src="images/ghost.png" alt=""></a>
+            <a  href="#block2"><img src="images/ghost.png" alt=""></a>
         </div>
 
     </div>
+<h1 id="features_header">
+    ОСОБЕННОСТИ DESTINY 2
+</h1>
 
     <div id="block2">
+        <h2>ТРИ УНИКАЛЬНЫХ КЛАССА</h2>
+        <nav id="slide_head">
+                <a href="">ВАРЛОК</a>
+                <a href="">ОХОТНИК</a>
+                <a href="">ТИТАН</a>
+        </nav>
         <div id="slider">
             <div id="warlock"></div>
             <div id="hunter"></div>
             <div id="titan"></div>
         </div>
     </div>
+
+
+<h1 id="season_header" >СИСТЕМА СЕЗОНОВ</h1>
+<h2 id="season_Subheader">ПОЛНОРАЗМЕРНОЕ DLC КАЖДЫЕ 3 МЕСЯЦА</h2>
+<div id="seasons">
+    <div id="curse_of_the_osiris" class="slide">
+        <video id="curse_of_the_osiris_video" src="images/vids/curse_of_the_osiris.mp4"  autoplay loop muted></video>
+        <h2 class="name">ПРОКЛЯТИЕ ОСИРИСА</h2>
+        <div class="video">
+            <div class="sub_video"></div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/cgINHELiOog" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="sub_video"></div>
+        </div>
+        <button class="buy_battlepass"> КУПИТЬ СЕЗОННЫЙ АБОНЕМЕНТ</button>
+
+    </div>
+
+
+    <!-- Кнопки назад и вперёд -->
+    <a class="prev" onclick=""></a>
+    <a class="next" onclick=""></a>
 </div>
-<script type="module" src="scripts/scripts.js"></script>
+
+<div id="awards">
+
+</div>
+
+<div id="reviews_IGN">
+
+</div>
+
+<div id="JOIN_US">
+
+</div>
+
+<dialog id="login">
+
+</dialog>
+
+<footer>
+
+</footer>
+</div>
+<script  src="scripts/scripts.js"></script>
 <script src="scripts/startup_script.js"></script>
 </body>
 </html>

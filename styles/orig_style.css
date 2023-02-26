@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,200;7..72,300;7..72,400&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -15,6 +18,7 @@ html{
     display: flex;
     flex-direction:column;
     align-items: center;
+    background-color: #151517;
 }
 
 
@@ -23,7 +27,7 @@ html{
 header{
     display:flex;
     width: 100%;
-    height: 85px;
+    height: 8vh;
     background-color: #151517;
     justify-content: center;
     align-items: center;
@@ -50,7 +54,7 @@ a{
     position: relative;
     box-sizing: border-box;
     width: 100vw;
-    height: 85vh;
+    height: 92vh;
     padding-top:10%;
     padding-bottom: 2%;
     background-size: cover;
@@ -62,19 +66,25 @@ a{
     box-sizing: border-box;
     overflow:hidden ;
     width: 100vw;
-    height: 85vh;
+    height: 92vh;
     object-fit: cover;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: 0;
 }
 #first_screen_align{
     margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     height: 40vh ;
     width: 30vw;
+    z-index: 1;
+    background-color: rgb(0,0,0,0.6)
 }
 
 #order{
@@ -92,22 +102,24 @@ a{
 }
 
 #info>h1{
-    margin-bottom: 10%;
+    margin-bottom: 5%;
+    font-size: 70px;
 }
-#info>p{
-    max-width:520px ;
-}
+
 #info{
     margin-bottom: 5%;
 }
 h1{
     font-size: 40px;
+    font-family: 'Rubik Mono One', sans-serif;
 }
 h2{
     font-size: 30px;
+    font-family: 'Literata', serif;
 }
 p{
     font-size: 24px;
+    font-family: 'Literata', serif;
 }
 
 h1,h2,p,#order{
@@ -117,11 +129,31 @@ h1,h2,p,#order{
 #next_screen{
     align-self: center;
 }
+/*О продукте*/
+#features_header{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
 /*слайдер*/
 #block2{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+#slide_head{
+
+    height: 60px;
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #E0E0E0 ;
+    margin: 20px 0;
+
+}
+#slide_head>a{
+    color:#151517;
+    font-size: 25px;
 }
 #slider{
     width: 100vw;
@@ -134,37 +166,28 @@ h1,h2,p,#order{
     background-size: 70% 100%;
     background-position: left;
     background-repeat:no-repeat ;
-
     position: absolute;
     width: inherit;
     height: inherit;
     background-color: yellow;
     z-index: 0;
     clip-path: polygon(0% 0%, 15% 0%, 5% 100%, 0% 100%);
-    /*transition: ease-in-out 0.15s, z-index 0s 0.15s;*/
 
-}
-.warlock_static{
-    z-index: 2;
-    clip-path: polygon(0% 0%, 80% 0%, 70% 100%, 0% 100%);
 }
 #hunter{
     background-position: center;
     background-repeat:no-repeat ;
     background-size: 90% 100%;
-    /*background-image:url("../images/hunter.png");*/
     position: absolute;
     width: inherit;
     height: inherit;
     background-color: blue;
     clip-path:polygon(15% 0%, 95% 0%, 85% 100%, 5% 100%);
-    /*transition: ease-in-out 0.15s, z-index 0s 0.15s;*/
 
 
 }
 #titan{
     background-position: right;
-    /*background-image: url("../images/titan.png");*/
     background-repeat: no-repeat;
     background-size: 70% 100%;
     right: 0;
@@ -173,6 +196,48 @@ h1,h2,p,#order{
     width: inherit;
     height: inherit;
     clip-path: polygon(95% 0%, 100% 0%, 100% 100%, 85% 100%);
-    /*transition: ease-in-out 0.15s, z-index 0s 0.15s;*/
 }
 
+#season_header{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+#season_Subheader{
+    margin-bottom: 20px;
+}
+.slide{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+.name{
+    margin-top: 120px;
+    color: yellow;
+    font-size: 40px;
+}
+#curse_of_the_osiris_video{
+    box-sizing: border-box;
+    overflow:hidden ;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.buy_battlepass{
+    width: 445px;
+    height: 70px;
+    font-size: 24px;
+    background-color: rgb(13,96,135,0.8);
+    border: none;
+    margin-bottom: 5%;
+}
