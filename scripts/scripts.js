@@ -33,7 +33,7 @@ let time=setInterval(function () {
 //Прыгающий Призрак
     anime({
         targets:'#next_screen',
-        translateY: -25,
+        translateY: -0,
         direction: 'alternate',
         loop: true,
         easing: 'linear',

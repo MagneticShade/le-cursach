@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,200;7..72,300;7..72,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
 
 *{
     margin: 0;
@@ -56,10 +57,10 @@ a{
     width: 100vw;
     height: 92vh;
     padding-top:10%;
-    padding-bottom: 2%;
     background-size: cover;
     display: flex;
     justify-content: space-between;
+
     flex-direction: column;
 }
 #main_video{
@@ -84,8 +85,18 @@ a{
     height: 40vh ;
     width: 30vw;
     z-index: 1;
-    background-color: rgb(0,0,0,0.6)
 }
+
+#info>h1{
+    letter-spacing: 25px;
+    text-shadow: 8px 8px 1px #333, -8px -8px 0 rgb(174, 135, 37);
+} 
+/* #first_screen_align{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 1;
+} */
 
 #order{
     width: 445px;
@@ -97,8 +108,12 @@ a{
 }
 
 #timer{
-    width: 445px;
-    text-align: center;
+   z-index: 1;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
 }
 
 #info>h1{
@@ -128,6 +143,7 @@ h1,h2,p,#order{
 
 #next_screen{
     align-self: center;
+    justify-self: self-end;
 }
 /*О продукте*/
 #features_header{
