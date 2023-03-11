@@ -30,10 +30,54 @@ let time=setInterval(function () {
         timer_field.textContent = `${zero(days)}:${zero(hours)}:${zero(minutes)}:${zero(seconds)}`;
     }
 })
+
+//Предзаказ
+let passive=anime({
+    targets:'#order',
+    outlineOffset:"20px",
+    outlineColor:"rgba(215, 194, 24, 0.0)",
+    direction: 'alternative',
+    loop:true,
+    easing:'linear',
+});
+let btn=document.getElementById('order');
+btn.addEventListener('mouseover',function () {
+    passive.pause();
+    btn.style.outlineColor="rgba(215, 194, 24, 0.0)";
+let active=anime({
+   targets:'#order',
+    outlineColor:"rgba(215, 194, 24, 0.8)",
+   outlineOffset:"10",
+    easing:"linear",
+    duration:300
+});
+
+
+})
+btn.addEventListener('mouseout',function () {
+    passive.play();
+})
+// вторичный предзаказ
+document.getElementById('sub_order').addEventListener('mouseover',function () {
+    anime({
+        targets:"#sub_order",
+        backgroundColor:"rgba(215, 194, 24, 0.8)",
+        easing:'linear',
+        duration:300,
+    })
+})
+document.getElementById('sub_order').addEventListener("mouseout", function () {
+    anime({
+        targets:"#sub_order",
+        backgroundColor:"rgba(215, 194, 24, 0.0)",
+        easing:'linear',
+        duration:300,
+    })
+})
 //Прыгающий Призрак
     anime({
         targets:'#next_screen',
-        translateY: -0,
+        translateY: [90,30],
         direction: 'alternate',
         loop: true,
         easing: 'linear',
