@@ -38,6 +38,7 @@ let passive=anime({
     outlineColor:"rgba(215, 194, 24, 0.0)",
     direction: 'alternative',
     loop:true,
+    // endDelay: 500,
     easing:'linear',
 });
 let btn=document.getElementById('order');
@@ -49,7 +50,8 @@ let active=anime({
     outlineColor:"rgba(215, 194, 24, 0.8)",
    outlineOffset:"10",
     easing:"linear",
-    duration:300
+    duration:300,
+
 });
 
 
@@ -83,7 +85,15 @@ document.getElementById('sub_order').addEventListener("mouseout", function () {
         easing: 'linear',
         duration:2000
     });
+//select
+anime({
+    targets:"#select",
+    textDecoration:"underline",
+    direction:'alternate',
+    easing:'linear',
+    duration:2000
 
+})
 //анимация слайдера
 let warlock=document.getElementById(`warlock`);
 let hunter=document.getElementById(`hunter`);
@@ -151,7 +161,7 @@ function titan_active() {
         easing: 'linear',
         duration:150
     });
-
+// document.getElementById("hunter_show").style.left='0';
 }
 warlock.addEventListener("click", function () {
 

@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,200;7..72,300;7..72,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
-
+@font-face {
+    font-family:Haymaker;
+    src: url("../fonts/AA-Haymaker.ttf");
+}
 *{
     margin: 0;
     padding: 0;
@@ -203,6 +206,8 @@ h1,h2,p,#order{
     background-color: aqua;
 }
 #warlock{
+    display: grid;
+    grid-template: 10% repeat(4, 1fr) / 1fr   15%  15%  10% 110px  1fr;
     background-size: 70% 100%;
     background-position: left;
     background-repeat:no-repeat ;
@@ -215,6 +220,8 @@ h1,h2,p,#order{
 
 }
 #hunter{
+    display: grid;
+    grid-template: 10% repeat(4, 1fr) / 15% 110px 1fr 1fr 1fr 1fr;
     background-position: center;
     background-repeat:no-repeat ;
     background-size: 90% 100%;
@@ -223,10 +230,11 @@ h1,h2,p,#order{
     height: inherit;
     background-color: blue;
     clip-path:polygon(15% 0%, 95% 0%, 85% 100%, 5% 100%);
-
-
 }
+
 #titan{
+    display: grid;
+    grid-template: 10% repeat(4, 1fr) / 1fr  9% 110px 1fr 1fr 1fr;
     background-position: right;
     background-repeat: no-repeat;
     background-size: 70% 100%;
@@ -238,46 +246,114 @@ h1,h2,p,#order{
     clip-path: polygon(95% 0%, 100% 0%, 100% 100%, 85% 100%);
 }
 
-#season_header{
-    margin-top: 40px;
-    margin-bottom: 30px;
-}
-#season_Subheader{
-    margin-bottom: 20px;
-}
-.slide{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    z-index: 1;
-}
-.name{
-    margin-top: 120px;
-    color: yellow;
-    font-size: 40px;
-}
-#curse_of_the_osiris_video{
-    box-sizing: border-box;
-    overflow:hidden ;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
+#warlock_show{
+
     position: absolute;
     left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
+    width: 580px;
+    height: 890px;
 }
-.buy_battlepass{
-    width: 445px;
-    height: 70px;
-    font-size: 24px;
-    background-color: rgb(13,96,135,0.8);
-    border: none;
-    margin-bottom: 5%;
+#hunter_show{
+    position: absolute;
+    right: 80px;
+    width: 830px;
+    height: 890px;
+}
+#titan_show{
+    position: absolute;
+    right: 0;
+    width: 540px;
+    height: 890px;
+}
+
+#header_h{
+    font-family: Haymaker;
+    text-align: center;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    font-size: 70px;
+    letter-spacing: 15px;
+}
+#header_t{
+    text-align: center;
+    grid-column-start: 4;
+    grid-column-end: 6;
+    font-size: 70px;
+    letter-spacing: 15px;
+}
+
+#header_w{
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    font-size: 70px;
+    letter-spacing: 15px;
+}
+#void_h{
+    grid-column: 2;
+    grid-row: 2;
+}
+#arc_h{
+    grid-column: 2;
+    grid-row: 3;
+
+}
+#solar_h{
+    grid-column: 2;
+    grid-row: 4;
+
+}
+
+
+#void_t{
+    grid-column: 3;
+    grid-row: 2;
+}
+#arc_t{
+    grid-column: 3;
+    grid-row: 3;
+
+}
+#solar_t{
+    grid-column: 3;
+    grid-row: 4;
+
+}
+
+#void_w{
+    grid-column: 5;
+    grid-row: 2;
+}
+#arc_w{
+    grid-column: 5;
+    grid-row: 3;
+
+}
+#solar_w{
+    grid-column: 5;
+    grid-row: 4;
+
+}
+#select {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+}
+
+#select::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+#select:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
