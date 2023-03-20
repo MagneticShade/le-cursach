@@ -17,6 +17,7 @@ html{
 }
 
 #wrapper{
+    width: 100%;
     overflow: hidden;
     padding: 0;
     display: flex;
@@ -334,26 +335,70 @@ h1,h2,p,#order{
     grid-row: 4;
 
 }
-#select {
-    display: inline-block;
-    position: relative;
-    color: #0087ca;
-}
 
-#select::after {
-    content: '';
-    position: absolute;
+
+/*горизонтальный скролл*/
+#horizontal_scroller{
+    width: 100vw;
+    display: grid;
+    gap: 30px;
+    grid-auto-rows:80vh;
+    grid-auto-flow: column;
+    grid-auto-columns:95vw ;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: inline mandatory;
+}
+#horizontal_scroller::-webkit-scrollbar {
+    width: 0;
+}
+#horizontal_scroller>*{
+    scroll-snap-align: center;
+}
+.slide{
+    background-color: #151517;
+    border: 2px solid rgba(215, 194, 24, 0.8);
+    display: grid;
+    grid-template-columns: 0.5fr repeat(7, 1fr) 0.5fr;
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+}
+.slide>.bookmarks_sl{
+    background-color: #E0E0E0;
+    grid-area: 2 / 1 / 6 / 2;
+}
+.slide>.header_sl{
+    grid-area: 1 / 1 / 2 / 10;
+    text-align: start;
+}
+.slide>.img_sl{
+    grid-area: 2 / 5 / 6 / 9;
+    object-fit: cover;
     width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #0087ca;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
+    height: 100%;
 
-#select:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+}
+.slide>.sub_header_sl{
+    grid-area: 2 / 2 / 3 / 5;
+}
+.slide>.filling_sl{
+    grid-area: 3 / 2 / 5 / 5;
+}
+.slide>.button_sl{
+    grid-area: 7 / 4 / 8 / 7;
+}
+/*Карточки с лором*/
+#card_holder{
+    justify-content: center;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 180px;
+
+}
+.card{
+    height: 550px;
+    width: 350px;
+    background-color: aqua;
 }
