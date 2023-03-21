@@ -87,146 +87,54 @@ document.getElementById('sub_order').addEventListener("mouseout", function () {
         easing: 'linear',
         duration:2000
     });
-//select
-anime({
-    targets:"#select",
-    textDecoration:"underline",
-    direction:'alternate',
-    easing:'linear',
-    duration:2000
-
-})
-//анимация слайдера
-// let warlock=document.getElementById(`warlock`);
-// let hunter=document.getElementById(`hunter`);
-// let titan=document.getElementById(`titan`);
-//
-// let is_anim=false;
-//
-// function warlock_active() {
-//     anime({
-//         targets: warlock,
-//         clipPath: `polygon(0% 0%, 80% 0%, 70% 100%, 0% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     });
-//     anime({
-//         targets: hunter,
-//         clipPath: `polygon(80% 0%, 95% 0%, 85% 100%, 70% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     });
-//     anime({
-//         targets: titan,
-//         clipPath: `polygon(95% 0%, 100% 0%, 100% 100%, 85% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     })
-//
-// }
-// function hunter_active() {
-//     anime({
-//         targets: hunter,
-//         clipPath: `polygon(15% 0%, 95% 0%, 85% 100%, 5% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     });
-//     anime({
-//         targets: warlock,
-//         clipPath: ` polygon(0% 0%, 15% 0%, 5% 100%, 0% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     });
-//     anime({
-//         targets: titan,
-//         clipPath: `polygon(95% 0%, 100% 0%, 100% 100%, 85% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     })
-// }
-// function titan_active() {
-//     anime({
-//         targets: titan,
-//         clipPath: `polygon(30% 0%, 100% 0%, 100% 100%, 20% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     })
-//     anime({
-//         targets: hunter,
-//         clipPath: `polygon(15% 0%, 30% 0%, 20% 100%, 5% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     });
-//     anime({
-//         targets: warlock,
-//         clipPath: `polygon(0% 0%, 15% 0%, 5% 100%, 0% 100%)`,
-//         easing: 'linear',
-//         duration:150
-//     });
-// // document.getElementById("hunter_show").style.left='0';
-// }
-// warlock.addEventListener("click", function () {
-//
-//     if (!is_anim) {
-//         is_anim=true;
-//         warlock_active();
-//
-//
-//         setTimeout(function () {
-//             is_anim=false;
-//         },150)
-//     }
-// })
-//
-// titan.addEventListener("click",function () {
-//     if (!is_anim) {
-//         is_anim=true;
-//         titan_active();
-//
-//         setTimeout(function () {
-//             is_anim=false;
-//         },150)
-//     }
-// })
-//
-// hunter.addEventListener("click",function () {
-//     if (!is_anim) {
-//         is_anim=true;
-//        hunter_active();
-//
-//         setTimeout(function () {
-//             is_anim=false;
-//         },150)
-//
-//     }
-// })
 // горизонтальный скрол
 
 const element = document.querySelector("#horizontal_scroller");
-document.getElementById('wrapper').addEventListener('wheel',function (event) {
-   console.log( element.getBoundingClientRect().top)
-    if (element.getBoundingClientRect().top===0){
+    element.addEventListener('wheel', (event) => {
         event.preventDefault();
-    }
-        })
-element.addEventListener('wheel', (event) => {
-    event.preventDefault();
-    element.scrollBy({
-        behavior:"smooth",
-        left: event.deltaY < 0 ? -30 : 30,
+        element.scrollBy({
+            behavior: "smooth",
+            left: event.deltaY < 0 ? -30 : 30,
+        });
     });
-    console.log(element.scrollLeft,element.scrollWidth-window.innerWidth);
-});
-
+//ухватится за слайд
+// const slider=document.querySelector('#horizontal_scroller');
+// let isDown = false;
+// let startX;
+// let scrollLeft;
+//
+// slider.addEventListener("mousedown", e => {
+//     isDown = true;
+//     slider.classList.add("active");
+//     startX = e.pageX - slider.offsetLeft;
+//     scrollLeft = slider.scrollLeft;
+//     slider.style.scrollSnapType='none'
+// });
+// slider.addEventListener("mouseleave", () => {
+//     isDown = false;
+//     slider.classList.remove("active");
+// });
+// slider.addEventListener("mouseup", () => {
+//     isDown = false;
+//     slider.classList.remove("active");
+//     slider.style.removeProperty('scroll-snap-type');
+// });
+// slider.addEventListener("mousemove", e => {
+//     if (!isDown) return;
+//     e.preventDefault();
+//     const x = e.pageX - slider.offsetLeft;
+//     const walk = x - startX;
+//     slider.scrollLeft = scrollLeft - walk;
+// });
 
 //карточки,тильт
 VanillaTilt.init(document.querySelectorAll('.card'));
 
 
-console.log( await fetch('https://www.bungie.net/platform/Destiny/Manifest/DestinyLoreDefinition/9250512/',{
-    headers:{ 'X-API-Key':'6be74b820d6f473d906ce82516d03b90'}
-
-}).then(response=>{return response.json()}));
+// console.log( await fetch('https://www.bungie.net/platform/Destiny/Manifest/DestinyLoreDefinition/9250512/',{
+//     headers:{ 'X-API-Key':'6be74b820d6f473d906ce82516d03b90'}
+//
+// }).then(response=>{return response.json()}));
 
 
 

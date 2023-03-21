@@ -344,10 +344,14 @@ h1,h2,p,#order{
     gap: 30px;
     grid-auto-rows:80vh;
     grid-auto-flow: column;
-    grid-auto-columns:95vw ;
+    grid-auto-columns:90vw ;
     overflow-x: scroll;
     overscroll-behavior-x: contain;
     scroll-snap-type: inline mandatory;
+}
+.active {
+    background: rgba(255,255,255,0.3);
+    cursor: grabbing;
 }
 #horizontal_scroller::-webkit-scrollbar {
     width: 0;
@@ -370,7 +374,7 @@ h1,h2,p,#order{
 }
 .slide>.header_sl{
     grid-area: 1 / 1 / 2 / 10;
-    text-align: start;
+    text-align: center;
 }
 .slide>.img_sl{
     grid-area: 2 / 5 / 6 / 9;
