@@ -97,6 +97,7 @@ const element = document.querySelector("#horizontal_scroller");
             left: event.deltaY < 0 ? -30 : 30,
         });
     });
+    
 //ухватится за слайд
 // const slider=document.querySelector('#horizontal_scroller');
 // let isDown = false;
