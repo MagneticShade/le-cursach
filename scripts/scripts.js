@@ -136,7 +136,30 @@ VanillaTilt.init(document.querySelectorAll('.card'));
 //     headers:{ 'X-API-Key':'6be74b820d6f473d906ce82516d03b90'}
 //
 // }).then(response=>{return response.json()}));
-
+//waypoint тест
+var waypoint = new Waypoint({
+    element: document.getElementById('slide3'),
+    handler: function() {
+     console.log('Basic waypoint triggered')
+    },
+    context: document.getElementById('horizontal_scroller'),
+    offset:'5%',
+    horizontal: true
+  })
+  let waypoint1=new Waypoint({
+    element:document.getElementById(`horizontal_scroller`),
+    handler:function(){
+        anime({
+            targets:'.slide',
+            translateY: [-30,0],
+            opacity: [0,1],
+            easing: 'linear',
+            duration:2000
+        })
+        waypoint1.destroy()
+    },
+    offset:"50%"
+  })
 
 
 
