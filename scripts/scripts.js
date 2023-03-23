@@ -136,30 +136,103 @@ VanillaTilt.init(document.querySelectorAll('.card'));
 //     headers:{ 'X-API-Key':'6be74b820d6f473d906ce82516d03b90'}
 //
 // }).then(response=>{return response.json()}));
-//waypoint тест
-var waypoint = new Waypoint({
-    element: document.getElementById('slide3'),
+
+
+//waypoint тест, анимации появления слайдера
+// var waypoint = new Waypoint({
+//     element: document.getElementById('slide3'),
+//     handler: function() {
+//      console.log('Basic waypoint triggered')
+//     },
+//     context: document.getElementById('horizontal_scroller'),
+//     offset:'5%',
+//     horizontal: true
+//   })
+//   let waypoint1=new Waypoint({
+//     element:document.getElementById(`horizontal_scroller`),
+//     handler:function(){
+//         anime({
+//             targets:'.slide',
+//             translateY: [-30,0],
+//             opacity: [0,1],
+//             easing: 'linear',
+//             duration:1000
+//         })
+//         waypoint1.destroy()
+//     },
+//     offset:"50%"
+//   })
+let slide1=new Waypoint({
+    element:document.getElementById(`horizontal_scroller`),
+    handler:function(){
+        anime({
+            targets:'#bookmarks_sl1',
+            translateX: [-300,0],
+            opacity: [0,1],
+            easing: 'linear',
+            duration:500
+        })
+        anime({
+            targets:'#header_sl1',
+            translateY: [-300,0],
+            opacity: [0,1],
+            easing: 'linear',
+            duration:500
+        })
+        anime({
+            targets:'#img_sl1',
+            translateX: [300,0],
+            opacity: [0,1],
+            easing: 'linear',
+            duration:500
+        })
+        anime({
+            targets:'#img_sl1',
+            translateX: [300,0],
+            opacity: [0,1],
+            easing: 'linear',
+            duration:500
+        })
+        anime({
+            targets:'#sub_header_sl1',
+            opacity: [0,1],
+            easing: 'linear',
+            duration:700
+        })
+        anime({
+            targets:'#filling_sl1',
+            opacity: [0,1],
+            easing: 'linear',
+            duration:700
+        })
+        anime({
+            targets:'#button_sl1',
+            translateY: [300,0],
+            opacity: [0,1],
+            easing: 'linear',
+            duration:500
+        })
+        this.destroy()
+    },
+    offset:"50%"
+  });
+
+let slide2 = new Waypoint({
+    element: document.getElementById('slide2'),
     handler: function() {
-     console.log('Basic waypoint triggered')
+    anime({
+        targets:'#bookmarks_sl2',
+                    translateX: [-30,0],
+                    opacity: [0,1],
+                    easing: 'linear',
+                    duration:250
+    })
+    this.destroy();
     },
     context: document.getElementById('horizontal_scroller'),
     offset:'5%',
     horizontal: true
-  })
-  let waypoint1=new Waypoint({
-    element:document.getElementById(`horizontal_scroller`),
-    handler:function(){
-        anime({
-            targets:'.slide',
-            translateY: [-30,0],
-            opacity: [0,1],
-            easing: 'linear',
-            duration:2000
-        })
-        waypoint1.destroy()
-    },
-    offset:"50%"
-  })
+  });
 
 
 
