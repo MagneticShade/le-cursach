@@ -81,7 +81,7 @@ a{
     z-index: 0;
 }
 #first_screen_align{
-    margin-left: 10%;
+    margin-left: 10vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -214,6 +214,9 @@ h1,h2,h3,p,#order{
     grid-column-gap: 25px;
     grid-row-gap: 25px;
 }
+.slide>*{
+    opacity: 0;
+}
 .slide>.bookmarks_sl{
     display: flex;
     flex-direction: column;
@@ -259,8 +262,9 @@ h1,h2,h3,p,#order{
 
 }
 .card{
-    height: 550px;
+    background-size:cover;
+    background-repeat:no-repeat;
+    height: 450px;
     width: 350px;
     background-color: aqua;
 }
-
