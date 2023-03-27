@@ -12,10 +12,25 @@
     scroll-behavior: auto;
 }
 
+::-webkit-scrollbar{
+    width: 1rem;
+}
+::-webkit-scrollbar-track{
+    background-color: #333333;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(182, 164, 22);
+}
+
 html{
     scroll-behavior: smooth;
 }
-
+body{
+    scrollbar-gutter: stable;
+}
+.scroll_lock{
+    overflow: hidden;
+}
 #wrapper{
     width: 100%;
     overflow: hidden;
@@ -60,7 +75,7 @@ a{
     box-sizing: border-box;
     width: 100vw;
     height: 92vh;
-    padding-top:10%;
+    padding-top:200px;
     background-size: cover;
     display: flex;
     justify-content: space-between;
@@ -81,20 +96,20 @@ a{
     z-index: 0;
 }
 #first_screen_align{
-    margin-left: 10vw;
+    margin-left: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    height: 40vh ;
-    width: 30vw;
+    height: 390px  ;
+    width: 700px;
     z-index: 1;
 }
 
 #info>h1{
     letter-spacing: 25px;
     text-shadow: 8px 8px 1px #333, -8px -8px 0 rgb(182, 164, 22);
-} 
+}
 /* #first_screen_align{
     display: flex;
     flex-direction: column;
@@ -160,7 +175,7 @@ h2{
     font-size: 35px;
     font-family: 'Literata', serif;
 }
-h3{
+h3,label{
     font-size: 28px;
     font-family: 'Literata', serif;
 }
@@ -169,7 +184,7 @@ p{
     font-family: 'Literata', serif;
 }
 
-h1,h2,h3,p,#order{
+h1,h2,h3,p,#order,label{
     color: #E0E0E0;
 }
 #next_screen{
@@ -199,7 +214,7 @@ h1,h2,h3,p,#order{
     cursor: grabbing;
 }
 #horizontal_scroller::-webkit-scrollbar {
-    width: 0;
+    display: none;
 }
 #horizontal_scroller>*{
     scroll-snap-align: center;
@@ -230,7 +245,7 @@ h1,h2,h3,p,#order{
     height: 50px;
 }
 .hidden{
-    
+display: none;
 }
 .slide>.header_sl{
     grid-area: 1 / 1 / 2 / 10;
@@ -266,5 +281,138 @@ h1,h2,h3,p,#order{
     background-repeat:no-repeat;
     height: 450px;
     width: 350px;
-    background-color: aqua;
+    transform-style:preserve-3d ;
+    perspective: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    box-shadow: 2px 2px 15px #E0E0E0;
+    border-bottom-left-radius:15px ;
+    border-top-left-radius:15px ;
 }
+.tag_back{
+    background-color: rgba(21, 21, 23, 0.8);
+    display: flex;
+    height: 50px;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+}
+.tag{
+    color:rgba(215, 194, 24);
+    text-shadow: 2px 2px 2px #151517;
+    transform:translateZ(30px);
+}
+/*модальные окна*/
+dialog{
+    box-sizing: content-box;
+    position: relative;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(215, 194, 24, 0.8);
+    background-color: #151517 ;
+    border-radius:5px ;
+
+}
+
+
+::backdrop{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 21, 23, 0.8);
+
+}
+
+/*форма входа*/
+
+#login{
+
+    overflow: hidden;
+}
+
+#login_content{
+    box-sizing: content-box;
+    padding: 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input_container{
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#form_login>h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+#form_reg>h2{
+    text-align: center;
+    margin-bottom: 30px;
+}
+#form_reg,#form_login{
+    box-sizing: content-box;
+}
+.input>label{
+    align-self: start;
+    margin-bottom:10px;
+}
+.text{
+
+    height: 35px;
+    font-size: 24px;
+    color: #E0E0E0;
+    background:none;
+    border: none;
+    border-bottom: 5px solid rgba(215, 194, 24, 0.8) ;
+}
+#content{
+    box-sizing: content-box;
+    padding: 40px;
+    height: 100%;
+}
+form{
+    box-sizing: content-box;
+}
+
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.buttons>button{
+    height: 55px;
+}
+#log_btn{
+    width: 100px;
+}
+#reg_btn{
+    width:260px ;
+}
+.input{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#close{
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    color: rgba(215, 194, 24, 0.8);
+}
+.btn_disabled{
+    color: #a6a6a6;
+}
+

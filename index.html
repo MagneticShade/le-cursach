@@ -12,8 +12,83 @@
 
 <div id="wrapper">
 
-    <!--Заголовок -->
 
+    <dialog id="login">
+        <div id="content">
+            <img id="close" src="images/cross-23.png" alt="">
+            <form id="form_login" action="">
+                <h2>ВОЙТИ</h2>
+
+                <div class="input_container" id="inp_log">
+                    <div class="input">
+                        <label for="log">Логин</label>
+                        <input type="text" class="text" name="log" id="log">
+                    </div>
+                    <div class="input">
+                        <label for="pas">Пароль</label>
+                        <input type="password"class="text" name="pas" id="pas">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="submit" id="log_btn" class="sys_button btn_disabled" disabled>Войти </button>
+                    <button type="button"  id="redir_btn" class="sys_button" >Зарегистрироваться </button>
+                </div>
+            </form>
+            <form id="form_reg" class="hidden" action="">
+                <h2>ЗАРЕГИСТРИРОВАТЬСЯ</h2>
+                <div class="input_container" id="reg_log">
+                    <div class="input">
+                        <label for="log">Логин</label>
+                        <input type="text" class="text" name="log" id="log_reg">
+                    </div>
+                    <div class="input">
+                        <label for="pas">Придумайте имя</label>
+                        <input type="text"class="text" name="nickname" id="nickname">
+                    </div>
+                    <div class="input">
+                        <label for="pas">Пароль</label>
+                        <input type="password"class="text" name="pas" id="pas_reg">
+                    </div>
+                    <div class="input">
+                        <label for="pas">Повторите пароль</label>
+                        <input type="password"class="text" name="pas_rep" id="pas_rep">
+                    </div>
+                    <div class="input">
+                        <label for="pas">Введите почту</label>
+                        <input type="password"class="text" name="mail" id="mail">
+                    </div>
+                    <div class="input">
+                        <h2>Выберите аватар</h2>
+                        <div id="selection">
+                            <label for="icon1">
+                                <img src="images/avatars/crown_of_storms.jpg" width="100px" height="100px" alt="">
+                                <input type="radio"class="hidden" value="images/avatars/crown_of_storms.jpg" name="icon" id="icon1">
+                            </label>
+                            <label for="icon2">
+                                <img src="images/avatars/live_action.jpg" width="100px" height="100px" alt="">
+                                <input type="radio"class="hidden" value="images/avatars/live_action.jpg" name="icon" id="icon2">
+                            </label>
+                            <label for="icon3">
+                                <img src="images/avatars/roll_out.png" width="100px" height="100px" alt="">
+                                <input type="radio"class="hidden" value="images/avatars/roll_out.png" name="icon" id="icon3">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button  id="reg_btn" class="sys_button" >Зарегистрироваться </button>
+                    <button class="sys_button" id="back" >назад</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+
+    <dialog id="reader">
+
+    </dialog>
+
+    <!--Заголовок -->
     <header>
 
         <div id="logo">
@@ -24,9 +99,9 @@
             <a href="">ГЛАВНАЯ</a>
             <a href="">О ПРОДУКТЕ</a>
             <a href="">ПРЕИМУЩЕСТВА</a>
-            <a href="">ОБРАТНАЯ СВЯЗЬ</a>
-            <a href="">916-222-2259</a>
-            <a id="account" href=""><img src="images/account.png" alt=""></a>
+            <a href="#">ОБРАТНАЯ СВЯЗЬ</a>
+            <a href="#">916-222-2259</a>
+            <a id="account" href="#"><img src="images/account.png" alt=""></a>
         </nav>
 
     </header>
@@ -58,9 +133,9 @@
             <button class="sys_button" id="sub_order">ПРЕДЗАКАЗАТЬ</button>
         </div>
     </div>
-    <h1 id="features_header">
+    <h2 id="features_header">
         ОСОБЕННОСТИ DESTINY 2
-    </h1>
+    </h2>
     <div id="horizontal_scroller">
         <div class="slide" id="slide1">
             <h2 class="header_sl" id="header_sl1">TEST HEADER</h2>
@@ -121,12 +196,36 @@
     </div>
     <h2>ИСТОРИИ НА КАЖДОМ ШАГУ</h2>
     <div id="card_holder">
-        <div class="card" id="card1"></div>
-        <div class="card" id="card2" ></div>
-        <div class="card" id="card3"></div>
-        <div class="card" id="card4"></div>
-        <div class="card" id="card5"></div>
-        <div class="card" id="card6"></div>
+        <div class="card" id="card1">
+            <div class="tag_back">
+                <p class="tag" id="tag1"></p>
+            </div>
+        </div>
+        <div class="card" id="card2">
+            <div class="tag_back">
+                <p class="tag" id="tag2"></p>
+            </div>
+        </div>
+        <div class="card" id="card3">
+            <div class="tag_back">
+                <p class="tag" id="tag3"></p>
+            </div>
+        </div>
+        <div class="card" id="card4">
+            <div class="tag_back">
+                <p class="tag" id="tag4"></p>
+            </div>
+        </div>
+        <div class="card" id="card5">
+            <div class="tag_back">
+                <p class="tag" id="tag5"></p>
+            </div>
+        </div>
+        <div class="card" id="card6">
+            <div class="tag_back">
+                <p class="tag" id="tag6"></p>
+            </div>
+        </div>
     </div>
     <div id="reviews">
 

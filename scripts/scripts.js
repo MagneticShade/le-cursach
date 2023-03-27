@@ -129,7 +129,12 @@ const element = document.querySelector("#horizontal_scroller");
 // });
 
 //карточки,тильт
-VanillaTilt.init(document.querySelectorAll('.card'));
+VanillaTilt.init(document.querySelectorAll('.card'),{
+    glare:true,
+    reverse:true,
+    "max-glare":0.2,
+    scale:1.1,
+});
 
 
 // console.log( await fetch('https://www.bungie.net/platform/Destiny/Manifest/DestinyLoreDefinition/9250512/',{
@@ -215,7 +220,7 @@ let slide1=new Waypoint({
         })
         this.destroy()
     },
-    offset:"50%"
+    offset:"90%"
 });
 
 let slide2 = new Waypoint({
@@ -389,35 +394,54 @@ let slide4 = new Waypoint({
     horizontal: true
 });
 
-console.log( await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyLoreDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
+let lore=( await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyLoreDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
 }).then(response=>{return response.json()}));
 
-let cayde=await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyPresentationNodeDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
+let lore_books=await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyPresentationNodeDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
 }).then(response=>{return response.json()});
+console.log(lore_books[3303363217])
 
-console.log("https://www.bungie.net"+cayde['4003550471']['displayProperties']['iconSequences']['1']['frames']['0']);
 
-let card=document.getElementById('card1');
+
+
 // card.style.backgroundImage=`url("https://www.bungie.net"${cayde['4003550471']['displayProperties']['iconSequences']['1']['frames']['0']})`;
 
 
 function getImage(id){
-    return `https://www.bungie.net${cayde[id]['displayProperties']['iconSequences']['1']['frames']['0']}`
+    return `https://www.bungie.net${lore_books[id]['displayProperties']['iconSequences']['1']['frames']['0']}`
 }
 
-card.style.backgroundImage=`url(${getImage('4003550471')})`
 
+let card=document.getElementById('card1');
 let card2=document.getElementById('card2');
 let card3=document.getElementById('card3');
 let card4=document.getElementById('card4');
 let card5=document.getElementById('card5');
 let card6=document.getElementById('card6');
 
+card.style.backgroundImage=`url(${getImage('4003550471')})`
 card2.style.backgroundImage=`url(${getImage('3303363217')})`
 card3.style.backgroundImage=`url(${getImage('28665996')})`
 card4.style.backgroundImage=`url(${getImage('2436418635')})`
 card5.style.backgroundImage=`url(${getImage('1960700009')})`
 card6.style.backgroundImage=`url(${getImage('3747262457')})`
+
+function getName(id) {
+    return lore_books[id]['displayProperties']['name'];
+}
+let tag1=document.getElementById('tag1');
+let tag2=document.getElementById('tag2');
+let tag3=document.getElementById('tag3');
+let tag4=document.getElementById('tag4');
+let tag5=document.getElementById('tag5');
+let tag6=document.getElementById('tag6');
+
+tag1.textContent=getName('4003550471');
+tag2.textContent=getName('3303363217');
+tag3.textContent=getName('28665996');
+tag4.textContent=getName('2436418635');
+tag5.textContent=getName('1960700009');
+tag6.textContent=getName('3747262457');
 
 // console.log( await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyLoreDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
 //     headers:{ 'X-API-Key':'6be74b820d6f473d906ce82516d03b90'}
@@ -425,8 +449,80 @@ card6.style.backgroundImage=`url(${getImage('3747262457')})`
 // }).then(response=>{return response.json()}));
 
 
+//вход и регистрация
+let log_trigger=document.getElementById('account');
+let log_window=document.getElementById('login');
 
+function closeModal() {
+    log_window.close();
+    document.querySelector("body").classList.remove("scroll_lock");
+}
+function openModalAndLockScroll() {
+    log_window.showModal();
+    document.querySelector("body").classList.add("scroll_lock");
+}
+function closeOnBackDropClick({ currentTarget, target }) {
 
+    let dialogElement = currentTarget;
+    let isClickedOnBackDrop = target === log_window;
+    if (isClickedOnBackDrop) {
+        document.body.classList.remove("scroll_lock");
+        dialogElement.close();
+    }
+}
 
+log_trigger.addEventListener('click',openModalAndLockScroll);
+document.getElementById('close').addEventListener('click',closeModal);
+log_window.addEventListener("click", closeOnBackDropClick);
 
+document.getElementById('form_login').addEventListener('change',function () {
+    if (document.getElementById('log').value!=''&&document.getElementById('pas').value!='') {
 
+        document.getElementById('log_btn').disabled = false;
+        document.getElementById('log_btn').classList.remove('btn_disabled');
+    }
+})
+let transition1;
+let transition2;
+let timeline1=anime.timeline({
+    easing:'easeOutExpo',
+});
+
+let timeline2=anime.timeline({
+    easing:'easeOutExpo',
+});
+
+let reg_form_obj=document.querySelectorAll('#form_reg>*');
+
+document.getElementById('redir_btn').addEventListener('click',function(){
+   anime({
+        targets:reg_form_obj,
+        translateX:[-200,0],
+        begin: function(anim) {
+            document.getElementById('form_login').classList.toggle('hidden');
+            document.getElementById('form_reg').classList.toggle('hidden');
+       },
+    });
+})
+document.getElementById('back').addEventListener('click',function () {
+    let tmp=document.querySelectorAll('#form_login>*');
+    anime({
+        targets:tmp,
+        translateY:[-200,0],
+        begin: function(anim) {
+            document.getElementById('form_login').classList.toggle('hidden');
+            document.getElementById('form_reg').classList.toggle('hidden');
+        },
+    });
+});
+document.getElementById('form_reg').addEventListener('submit',async function (event) {
+    event.preventDefault();
+    await fetch('./php/handler.php',{
+        method:'POST',
+        body:new FormData(document.getElementById('form_reg'))
+    }).then(response=>{
+        return response.text()
+    }).then(text=>{
+        console.log(text);
+    })
+})
