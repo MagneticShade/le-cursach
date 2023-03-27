@@ -394,6 +394,8 @@ let slide4 = new Waypoint({
     horizontal: true
 });
 
+let book_array=['4003550471','3303363217','28665996','2436418635','1960700009','3747262457']
+
 let lore=( await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyLoreDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
 }).then(response=>{return response.json()}));
 
@@ -419,12 +421,12 @@ let card4=document.getElementById('card4');
 let card5=document.getElementById('card5');
 let card6=document.getElementById('card6');
 
-card.style.backgroundImage=`url(${getImage('4003550471')})`
-card2.style.backgroundImage=`url(${getImage('3303363217')})`
-card3.style.backgroundImage=`url(${getImage('28665996')})`
-card4.style.backgroundImage=`url(${getImage('2436418635')})`
-card5.style.backgroundImage=`url(${getImage('1960700009')})`
-card6.style.backgroundImage=`url(${getImage('3747262457')})`
+card.style.backgroundImage=`url(${getImage( book_array[0])})`
+card2.style.backgroundImage=`url(${getImage(book_array[1])})`
+card3.style.backgroundImage=`url(${getImage(book_array[2])})`
+card4.style.backgroundImage=`url(${getImage(book_array[3])})`
+card5.style.backgroundImage=`url(${getImage(book_array[4])})`
+card6.style.backgroundImage=`url(${getImage(book_array[5])})`
 
 function getName(id) {
     return lore_books[id]['displayProperties']['name'];
@@ -436,12 +438,42 @@ let tag4=document.getElementById('tag4');
 let tag5=document.getElementById('tag5');
 let tag6=document.getElementById('tag6');
 
-tag1.textContent=getName('4003550471');
-tag2.textContent=getName('3303363217');
-tag3.textContent=getName('28665996');
-tag4.textContent=getName('2436418635');
-tag5.textContent=getName('1960700009');
-tag6.textContent=getName('3747262457');
+tag1.textContent=getName(book_array[0]);
+tag2.textContent=getName(book_array[1]);
+tag3.textContent=getName(book_array[2]);
+tag4.textContent=getName(book_array[3]);
+tag5.textContent=getName(book_array[4]);
+tag6.textContent=getName(book_array[5]);
+
+function OpenLore(bookId) {
+    let reader=document.getElementById('reader');
+    reader.showModal();
+}
+let reader=document.getElementById('reader')
+// card.addEventListener('click',function () {
+//     OpenLore(book_array[0])
+// })
+function closeReader() {
+    reader.close();
+    document.querySelector("body").classList.remove("scroll_lock");
+}
+function openReaderAndLockScroll() {
+    reader.showModal();
+    document.querySelector("body").classList.add("scroll_lock");
+}
+function closeReaderOnBackDropClick({ currentTarget, target }) {
+
+    let dialogElement = currentTarget;
+    let isClickedOnBackDrop = target === reader;
+    if (isClickedOnBackDrop) {
+        document.body.classList.remove("scroll_lock");
+        dialogElement.close();
+    }
+}
+
+card.addEventListener('click',openReaderAndLockScroll);
+document.getElementById('close_reader').addEventListener('click',closeModal);
+reader.addEventListener("click", closeReaderOnBackDropClick);
 
 // console.log( await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyLoreDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
 //     headers:{ 'X-API-Key':'6be74b820d6f473d906ce82516d03b90'}
@@ -482,16 +514,6 @@ document.getElementById('form_login').addEventListener('change',function () {
         document.getElementById('log_btn').classList.remove('btn_disabled');
     }
 })
-let transition1;
-let transition2;
-let timeline1=anime.timeline({
-    easing:'easeOutExpo',
-});
-
-let timeline2=anime.timeline({
-    easing:'easeOutExpo',
-});
-
 let reg_form_obj=document.querySelectorAll('#form_reg>*');
 
 document.getElementById('redir_btn').addEventListener('click',function(){
@@ -515,6 +537,7 @@ document.getElementById('back').addEventListener('click',function () {
         },
     });
 });
+
 document.getElementById('form_reg').addEventListener('submit',async function (event) {
     event.preventDefault();
     await fetch('./php/handler.php',{
@@ -526,3 +549,39 @@ document.getElementById('form_reg').addEventListener('submit',async function (ev
         console.log(text);
     })
 })
+//обзоры
+let reviews=await fetch('../php/handler.php').then(response=>{
+return response.json();
+})
+for(let review of reviews){
+    console.log(review)
+let user=document.createElement('div');
+let time=document.createElement('div');
+let content=document.createElement('div');
+let review_doc=document.createElement('div');
+
+let user_image=document.createElement('img');
+let user_name=document.createElement('h3');
+let time_timestamp=document.createElement('p');
+let content_content=document.createElement('p');
+
+user_image.src=review['avatar_url'];
+user_name.textContent=review['user_name'];
+time_timestamp.textContent=review['time'];
+content_content.textContent=review['content']
+
+user_image.classList.add('avatar');
+review_doc.classList.add('review');
+user.classList.add('user');
+time.classList.add('time');
+content.classList.add('content');
+
+user.appendChild(user_image);
+user.appendChild(user_name);
+time.appendChild(time_timestamp);
+content.appendChild(content_content);
+review_doc.appendChild(user);
+review_doc.appendChild(time);
+review_doc.appendChild(content);
+document.getElementById('reviews').appendChild(review_doc);
+}
