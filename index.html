@@ -12,10 +12,17 @@
 
 <div id="wrapper">
 
+    <dialog id="error">
+        <div id="error_holder">
+            <h2>Произошла ошибка</h2>
+            <h3 id="error_content"></h3>
+            <button id="closeError" class="sys_button">ОК</button>
+        </div>
+    </dialog>
 
     <dialog id="login">
         <div id="content">
-            <img id="close" src="images/cross-23.png" alt="">
+            <img class="close" id="close" src="images/cross-23.png" alt="">
             <form id="form_login" action="">
                 <h2>ВОЙТИ</h2>
 
@@ -39,7 +46,7 @@
                 <div class="input_container" id="reg_log">
                     <div class="input">
                         <label for="log">Логин</label>
-                        <input type="text" class="text" name="log" id="log_reg">
+                        <input type="text" class="text" name="log_reg" id="log_reg">
                     </div>
                     <div class="input">
                         <label for="pas">Придумайте имя</label>
@@ -47,7 +54,7 @@
                     </div>
                     <div class="input">
                         <label for="pas">Пароль</label>
-                        <input type="password"class="text" name="pas" id="pas_reg">
+                        <input type="password"class="text" name="pas_reg" id="pas_reg">
                     </div>
                     <div class="input">
                         <label for="pas">Повторите пароль</label>
@@ -77,7 +84,7 @@
                 </div>
                 <div class="buttons">
                     <button  id="reg_btn" class="sys_button" >Зарегистрироваться </button>
-                    <button class="sys_button" id="back" >назад</button>
+                    <button type="button" class="sys_button" id="back" >назад</button>
                 </div>
             </form>
         </div>
@@ -85,23 +92,41 @@
 
 
     <dialog id="reader">
-        <img id="close_reader" src="images/cross-23.png" alt="">
+        <img class="close" id="close_reader" src="images/cross-23.png" alt="">
+        <h2 id="lore_name"></h2>
+        <p id="lore_content">
+
+        </p>
     </dialog>
 
     <!--Заголовок -->
     <header>
 
-        <div id="logo">
-            <img src="images/logo.png" alt="">
+        <div class="logo">
+            <a href="#">
+                <img src="images/logo.png" alt="">
+            </a>
         </div>
 
-        <nav id="chapters">
+        <nav class="chapters">
             <a href="">ГЛАВНАЯ</a>
             <a href="">О ПРОДУКТЕ</a>
-            <a href="">ПРЕИМУЩЕСТВА</a>
+            <div class="dropdown">
+                <a class="dropbtn">ПРЕИМУЩЕСТВА</a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                    <a href="#">Link 4</a>
+                    <a href="#">Link 5</a>
+                </div>
+            </div>
             <a href="#">ОБРАТНАЯ СВЯЗЬ</a>
-            <a href="#">916-222-2259</a>
-            <a id="account" href="#"><img src="images/account.png" alt=""></a>
+            <a href="tel:916-222-2259">916-222-2259</a>
+            <div class="account" >
+                <img src="images/account.png" width="50px" height="50px" alt="">
+                <p id="user_name"></p>
+            </div>
         </nav>
 
     </header>
@@ -230,8 +255,52 @@
     <h2>ОТЗЫВЫ</h2>
     <div id="reviews">
     </div>
+    <div id="join_us">
+        <div id="join_us_container">
+            <h2>ПРИСОЕДИНИТЬСЯ</h2>
+            <p>Присоединяйтесь к миллионам Стражей, которые уже получают игровые награды, экономьте время с полезными функциями и оставайтесь на связи с огромным сообществом игроков Destiny.</p>
+            <button id="join_us_button" class="sys_button">Присоединиться к Bungie</button>
+        </div>
+    </div>
     <footer>
+        <div id="footer_holder">
+            <div id="footer_logo" class="logo">
+                <a href="#">
+                    <img src="images/logo.png" alt="">
+                </a>
+            </div>
 
+            <nav id="footer_chapters" class="chapters">
+                <div>
+                    <a href="">ГЛАВНАЯ</a>
+                </div>
+                <div>
+                    <a href="">О ПРОДУКТЕ</a>
+                </div>
+                <div class="dropdown">
+                    <a>ПРЕИМУЩЕСТВА</a>
+                    <div id="dropout">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                        <a href="#">Link 4</a>
+                        <a href="#">Link 5</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="#">ОБРАТНАЯ СВЯЗЬ</a>
+                </div>
+                <div>
+                    <a href="tel:916-222-2259">916-222-2259</a>
+                </div>
+                <div>
+                    <a href="#first_screen"><img src="images/arrow%20up.png" alt=""></a>
+                </div>
+            </nav>
+        </div>
+    <div id="author_rights">
+        <p>© 2023 Колледж Предпринимательства. Все права сохранены.</p>
+    </div>
     </footer>
 </div>
 <script src="scripts/libs/node_modules/waypoints/lib/noframework.waypoints.min.js"></script>
