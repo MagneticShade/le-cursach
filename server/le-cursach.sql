@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 27 2023 г., 14:18
--- Версия сервера: 8.0.30
--- Версия PHP: 8.1.9
+-- Время создания: Мар 29 2023 г., 00:36
+-- Версия сервера: 8.0.24
+-- Версия PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -85,7 +85,7 @@ CREATE TABLE `user` (
   `user_name` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
   `email` varchar(25) NOT NULL,
-  `status` enum('user','admin') NOT NULL,
+  `status` enum('user','admin') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'user',
   `avatar_url` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -96,7 +96,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `login`, `user_name`, `password`, `email`, `status`, `avatar_url`) VALUES
 (1, 'user1', 'user11', '12345', 'user@mail.ru', 'user', 'images/avatars/crown_of_storms.jpg'),
 (2, 'user2', 'cayde', 'ace', 'user@mail.ru', 'user', 'images/avatars/roll_out.png'),
-(3, 'user3', 'lfg', 'gjalahorn', 'user@mai.ru', 'user', 'images/avatars/live_action.jpg');
+(3, 'user3', 'lfg', 'gjalahorn', 'user@mai.ru', 'user', 'images/avatars/live_action.jpg'),
+(6, 'test', 'teset', '12345678', '@mail.ru', 'user', 'images/avatars/roll_out.png');
 
 --
 -- Индексы сохранённых таблиц
@@ -143,7 +144,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
