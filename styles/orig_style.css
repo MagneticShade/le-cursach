@@ -63,11 +63,11 @@ a{
     color: #E0E0E0;
 }
 .chapters{
-    width: 1100px;
+    width: 70%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left:10%;
+    margin-left:10vw;
 }
 .chapters > a{
     font-size:20px;
@@ -90,7 +90,7 @@ a{
     text-shadow: 2px 2px #151517;
     font-family: "Inter",serif ;
     color: #E0E0E0;
-    padding: 16px;
+    padding-top: 16px;
     font-size: 20px;
     border: none;
     cursor: pointer;
@@ -140,13 +140,77 @@ a{
     justify-content: space-around ;
     align-items: center;
 }
+/*меню*/
+#menu{
+
+}
+#menu_content{
+    position: relative;
+    
+}
+.ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .hamRotate.active {
+    transform: rotate(45deg);
+  }
+  .hamRotate180.active {
+    transform: rotate(180deg);
+  }
+  .line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke:#E0E0E0;
+    stroke-width:5.5;
+    stroke-linecap:round;
+  }
+  .ham1 .top {
+    stroke-dasharray: 40 139;
+  }
+  .ham1 .bottom {
+    stroke-dasharray: 40 180;
+  }
+  .ham1.active .top {
+    stroke-dashoffset: -98px;
+  }
+  .ham1.active .bottom {
+    stroke-dashoffset: -138px;
+  }
+@media screen and (max-width: 990px) {
+    #dropdown{
+        display: none;
+    }
+    #call_back{
+        display: none;
+    }
+    #call{
+        display: none;
+    }
+    #head_chapters{
+        justify-content: end;
+    }
+   }
+   @media screen and (max-width:1200px) {
+    #home{
+        display: none;
+    }
+    #about{
+        display: none;
+    }
+   }
 /* Первый экран*/
 
 #first_screen{
     box-sizing: border-box;
     width: 100%;
     height: 92vh;
-    padding-top:200px;
+    padding-top:15vh;
     background-size: cover;
     display: flex;
     justify-content: space-between;
@@ -157,7 +221,7 @@ a{
     box-sizing: border-box;
     overflow:hidden ;
     width: 100%;
-    height: 92vh;
+    height: 100vh;
     object-fit: cover;
     position: absolute;
     left: 0;
@@ -167,7 +231,7 @@ a{
     z-index: 0;
 }
 #first_screen_align{
-    margin-left: 10%;
+    margin-left: 10vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -537,7 +601,7 @@ form{
     height: 590px;
     flex-direction: column;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
 }
 #join_us_container{
     display: flex;
@@ -547,9 +611,7 @@ form{
     width: 60%;
     height: 300px;
 }
-#join_us_container>p{
-    width: 100%;
-}
+ 
 #join_us_container>button{
     width: 340px;
     height: 70px;
@@ -557,15 +619,19 @@ form{
 }
 /*подвал*/
 footer{
-   display: flex;
+    text-align: center;
+    width: 100% ;
+    height: 300px;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 #footer_holder{
-    padding: 60px;
+    margin-top:3% ;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content:space-around;
     align-items: center;
 }
 #footer_chapters{
@@ -574,12 +640,15 @@ footer{
 #footer_logo{
     height: 100px;
 }
-#footer_chapters>div{
-    height: 140px;
+#footer_holder>div{
+    height: 180px;
 }
-#footer_chapters>div>a{
+#footer_holder>div>a{
     font-size:20px;
     font-family: "Inter",serif ;
+}
+#up{
+    height: 50px !important;
 }
 
 #dropout>a{
