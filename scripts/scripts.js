@@ -1,6 +1,7 @@
 "use strict"
 import VanillaTilt from '/scripts/libs/node_modules/vanilla-tilt/lib/vanilla-tilt.es2015.js';
 import anime from '/scripts/libs/node_modules/animejs/lib/anime.es.js';
+
 async function check_login() {
 
     let broke=false;
@@ -12,12 +13,40 @@ async function check_login() {
         document.querySelector('.account>img').src=json['avatar_url'];
         document.querySelector('.account').appendChild(name);
     }).catch(e=>{
+        let passive=anime({
+            targets:'#join_us_button',
+            outlineOffset:"20px",
+            outlineColor:"rgba(215, 194, 24, 0.0)",
+            direction: 'alternative',
+            loop:true,
+            easing:'linear',
+        });
+        let btn=document.getElementById('join_us_button');
+        btn.addEventListener('mouseover',function () {
+            passive.pause();
+            btn.style.outlineColor = "rgba(215, 194, 24, 0.0)";
+            let active = anime({
+                targets: '#join_us_button',
+                outlineColor: "rgba(215, 194, 24, 0.8)",
+                outlineOffset: "10",
+                easing: "linear",
+                duration: 300,
+
+            });
+        })
+        btn.addEventListener('mouseout',function () {
+            passive.play();
+        })
+            document.getElementById('join_us_button').addEventListener('click',openModalAndLockScroll);
+        log_trigger.addEventListener('click',openModalAndLockScroll);
         broke=true;
     });
     if (!broke){
+        document.getElementById('join_us').remove();
         log_trigger.addEventListener('click',SessionDestroy);
         log_trigger.removeEventListener('click',openModalAndLockScroll);
     }
+
 }
 let log_trigger=document.querySelector('.account');
 check_login();
@@ -171,7 +200,6 @@ let slide1=new Waypoint({
     },
     offset:"90%"
 });
-
 let slide2 = new Waypoint({
     element: document.getElementById('slide2'),
     handler: function() {
@@ -390,19 +418,22 @@ VanillaTilt.init(document.querySelectorAll('.card'),{
 
 
 let book_array=['2637550529','3303363217','158956081','2436418635','1960700009','3747262457']
+let manifest=(await fetch('https://www.bungie.net/Platform/Destiny2/Manifest/',{}
+).then(response=>{return response.json()}))
+console.log()
+let lore=( await fetch('https://www.bungie.net'+manifest['Response']['jsonWorldComponentContentPaths']['ru']['DestinyLoreDefinition']
+).then(response=>{return response.json()}));
 
-let lore=( await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyLoreDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
-}).then(response=>{return response.json()}));
-let lore_definition=( await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyRecordDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
-}).then(response=>{return response.json()}));
-let lore_books=await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyPresentationNodeDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
-}).then(response=>{return response.json()});
-console.log(lore_books[book_array[0]]);
+let lore_definition=( await fetch('https://www.bungie.net'+manifest['Response']['jsonWorldComponentContentPaths']['ru']['DestinyRecordDefinition']
+).then(response=>{return response.json()}));
+let lore_books=await fetch('https://www.bungie.net'+manifest['Response']['jsonWorldComponentContentPaths']['ru']['DestinyPresentationNodeDefinition']
+    ).then(response=>{return response.json()});
+
 
 
 function OpenLore(bookId) {
     document.getElementById('lore_name').textContent=getName(bookId);
-    document.getElementById('lore_content').textContent=lore[lore_definition[lore_books[bookId]["children"]['records']['0']['recordHash']]['loreHash']]['displayProperties']['description'];
+    document.getElementById('lore_content').innerText=lore[lore_definition[lore_books[bookId]["children"]['records']['0']['recordHash']]['loreHash']]['displayProperties']['description'];
 }
 let reader=document.getElementById('reader')
 
@@ -426,6 +457,7 @@ function closeReaderOnBackDropClick({ currentTarget, target }) {
         dialogElement.close();
     }
 }
+reader.addEventListener("click", closeReaderOnBackDropClick);
 
 
 function getName(id) {
@@ -434,6 +466,7 @@ function getName(id) {
 function getImage(id){
     return `https://www.bungie.net${lore_books[id]['displayProperties']['iconSequences']['1']['frames']['0']}`
 }
+
 let cards=document.querySelectorAll('.card')
 let tags=document.querySelectorAll('.tag');
 for (let i =0;i<6;i++){
@@ -446,13 +479,6 @@ for (let i =0;i<6;i++){
 }
 
 
-
-
-
-// card.addEventListener('click',openReaderAndLockScroll);
-// document.getElementById('close_reader').addEventListener('click',closeReader);
-// reader.addEventListener("click", closeReaderOnBackDropClick);
-
 // console.log( await fetch('https://www.bungie.net/common/destiny2_content/json/ru/DestinyLoreDefinition-88e2ca87-7551-4503-a5b5-2527c4531503.json',{
 //     headers:{ 'X-API-Key':'6be74b820d6f473d906ce82516d03b90'}
 
@@ -464,10 +490,12 @@ let error_window=document.getElementById('error');
 function closeError() {
     error_window.close();
 }
+
 function ShowErrorAndLockScroll() {
     error_window.showModal();
     document.querySelector("body").classList.add("scroll_lock");
 }
+
 function closeErrorOnBackDropClick({ currentTarget, target }) {
 
     let dialogElement = currentTarget;
@@ -481,7 +509,6 @@ document.getElementById('closeError').addEventListener('click',closeError);
 error_window.addEventListener('click',closeErrorOnBackDropClick)
 
 //вход и регистрация
-
 
 let log_window=document.getElementById('login');
 
@@ -505,7 +532,7 @@ function closeOnBackDropClick({ currentTarget, target }) {
     }
 }
 
-log_trigger.addEventListener('click',openModalAndLockScroll);
+
 document.getElementById('close').addEventListener('click',closeModal);
 log_window.addEventListener("click", closeOnBackDropClick);
 
@@ -518,6 +545,7 @@ form_login.addEventListener('change',function () {
         document.getElementById('log_btn').classList.remove('btn_disabled');
     }
 })
+
 let reg_form_obj=document.querySelectorAll('#form_reg>*');
 
 document.getElementById('redir_btn').addEventListener('click',function(){
@@ -541,16 +569,205 @@ document.getElementById('back').addEventListener('click',function () {
         },
     });
 });
+
 form_reg.addEventListener('submit',function (event) {
     event.preventDefault();
-    send_form(form_reg);
+    send_form(form_reg,"При обработке произошла ошибка, попробуйте позже");
 })
+/*валидация*/
+function checkText(elem) {
+   return /^\w{6,15}$/g.test(String(elem.value));
+}
+function checkPas(elem) {
+    return /^[\w$&=?#|.*%!]{6,15}$/g.test(String(elem.value));
+}
+function checkEmail(elem) {
+    return /^.{3,17}@.{4,8}$/g.test(String(elem.value));
+}
+function checkIcon() {
+ let tmp=document.getElementById('icon_checker').querySelectorAll('input');
+ for (let input of tmp){
+     if (input.checked==true){
+         return true
+     }
+ }
+ return true;
+}
+/* подсказка*/
+document.getElementById('log_reg').addEventListener('focus',function () {
+    document.querySelector(`#log_reg+.validate`).classList.remove('hidden');
+})
+document.getElementById('log_reg').addEventListener('keyup',function () {
+    if (checkText(document.getElementById('log_reg'))){
+        !document.querySelector(`#log_reg+.validate`).classList.remove('allRed');
+        if (!document.querySelector(`#log_reg+.validate`).classList.contains('allGreen')){
+            document.querySelector(`#log_reg+.validate`).classList.add('allGreen');
+        }
+    }
+    else{
+        !document.querySelector(`#log_reg+.validate`).classList.remove('allGed');
+        if (!document.querySelector(`#log_reg+.validate`).classList.contains('allRed')){
+            document.querySelector(`#log_reg+.validate`).classList.add('allRed');
+        }
+    }
+})
+
+document.getElementById('log_reg').addEventListener('blur',function () {
+    document.querySelector(`#log_reg+.validate`).classList.add('hidden');
+})
+
+document.getElementById('nickname').addEventListener('focus',function () {
+    document.querySelector(`#nickname+.validate`).classList.remove('hidden');
+})
+
+document.getElementById('nickname').addEventListener('keyup',function () {
+    if (checkText(document.getElementById('nickname'))){
+        !document.querySelector(`#nickname+.validate`).classList.remove('allRed');
+        if (!document.querySelector(`#nickname+.validate`).classList.contains('allGreen')){
+            document.querySelector(`#nickname+.validate`).classList.add('allGreen');
+        }
+    }
+    else{
+        !document.querySelector(`#nickname+.validate`).classList.remove('allGed');
+        if (!document.querySelector(`#nickname+.validate`).classList.contains('allRed')){
+            document.querySelector(`#nickname+.validate`).classList.add('allRed');
+        }
+    }
+})
+
+document.getElementById('nickname').addEventListener('blur',function () {
+    document.querySelector(`#nickname+.validate`).classList.add('hidden');
+})
+
+document.getElementById('pas_reg').addEventListener('focus',function () {
+    document.querySelector(`#pas_reg+.validate`).classList.remove('hidden');
+})
+
+document.getElementById('pas_reg').addEventListener('keyup',function () {
+    if (checkPas(document.getElementById('pas_reg'))){
+        !document.querySelector(`#pas_reg+.validate`).classList.remove('allRed');
+        if (!document.querySelector(`#pas_reg+.validate`).classList.contains('allGreen')){
+            document.querySelector(`#pas_reg+.validate`).classList.add('allGreen');
+        }
+    }
+    else{
+        !document.querySelector(`#pas_reg+.validate`).classList.remove('allGed');
+        if (!document.querySelector(`#pas_reg+.validate`).classList.contains('allRed')){
+            document.querySelector(`#pas_reg+.validate`).classList.add('allRed');
+        }
+    }
+})
+
+document.getElementById('pas_reg').addEventListener('blur',function () {
+    document.querySelector(`#pas_reg+.validate`).classList.add('hidden');
+})
+
+
+
+document.getElementById('pas_rep').addEventListener('focus',function () {
+    document.querySelector(`#pas_rep+.validate`).classList.remove('hidden');
+})
+
+document.getElementById('pas_rep').addEventListener('keyup',function () {
+    if (document.getElementById('pas_rep').value==document.getElementById('pas_reg').value){
+        !document.querySelector(`#pas_rep+.validate`).classList.remove('allRed');
+        if (!document.querySelector(`#pas_rep+.validate`).classList.contains('allGreen')){
+            document.querySelector(`#pas_rep+.validate`).classList.add('allGreen');
+        }
+    }
+    else{
+        !document.querySelector(`#pas_rep+.validate`).classList.remove('allGed');
+        if (!document.querySelector(`#pas_rep+.validate`).classList.contains('allRed')){
+            document.querySelector(`#pas_rep+.validate`).classList.add('allRed');
+        }
+    }
+})
+
+document.getElementById('pas_rep').addEventListener('blur',function () {
+    document.querySelector(`#pas_rep+.validate`).classList.add('hidden');
+})
+
+document.getElementById('mail').addEventListener('focus',function () {
+    document.querySelector(`#mail+.validate`).classList.remove('hidden');
+})
+
+document.getElementById('mail').addEventListener('keyup',function () {
+    if (checkEmail(document.getElementById('mail'))){
+        !document.querySelector(`#mail+.validate`).classList.remove('allRed');
+        if (!document.querySelector(`#mail+.validate`).classList.contains('allGreen')){
+            document.querySelector(`#mail+.validate`).classList.add('allGreen');
+        }
+    }
+    else{
+        !document.querySelector(`#mail+.validate`).classList.remove('allGed');
+        if (!document.querySelector(`#mail+.validate`).classList.contains('allRed')){
+            document.querySelector(`#mail+.validate`).classList.add('allRed');
+        }
+    }
+})
+
+document.getElementById('mail').addEventListener('blur',function () {
+    document.querySelector(`#mail+.validate`).classList.add('hidden');
+})
+
+
+
+let icon_labels= document.querySelectorAll('.glow_up>img')
+for (let label of  icon_labels){
+    label.addEventListener('click',function () {
+        if (!label.classList.contains('chosen')) {
+            for (let elem of icon_labels) {
+                elem.classList.remove('chosen');
+            }
+            label.classList.add('chosen');
+        }
+    })
+}
+
+function checkALL() {
+        if (checkText(document.getElementById('log_reg')) &&
+        checkText(document.getElementById('nickname')) &&
+        checkPas(document.getElementById('pas_reg')) &&
+        checkEmail(document.getElementById('mail')) &&
+        checkIcon()){
+            document.getElementById('reg_btn').disabled=false;
+            document.getElementById('reg_btn').classList.remove('btn_disabled');
+        }
+        else if(!document.getElementById('reg_btn').classList.contains('btn_disabled')){
+            document.getElementById('reg_btn').classList.add('btn_disabled');
+            document.getElementById('reg_btn').disabled=true;
+        }
+
+}
+let inputs=document.getElementById('form_reg').querySelectorAll('input');
+
+for (let input of inputs ){
+    if (!input.classList.contains('icon')) {
+        input.addEventListener('keyup', checkALL)
+    }
+    else{
+        input.addEventListener('change',checkALL)
+            }
+}
+
+// form_reg.addEventListener('change',function () {
+//     let obj={};
+//     for (let field of form_reg){
+//         let {name} =field;
+//         if (name){
+//             let {type,checked,value}=field;
+//             obj[name]=checkboxRadio(type)?checked:value;
+//         }
+//     }
+//     console.log(obj);
+// })
+function  checkboxRadio(type){return['checkbox','radio'].includes(type)}
 
 form_login.addEventListener('submit', function (event) {
     event.preventDefault();
-    send_form(form_login);
+    send_form(form_login,"Такого пользователя не существует");
 })
-async function send_form(form) {
+async function send_form(form,error_log) {
     let broke=false
     await fetch('./php/logReg.php', {
         method: 'POST',
@@ -562,11 +779,12 @@ async function send_form(form) {
         document.querySelector('.account>img').src=json['avatar_url'];
     }).catch(e=>{
         ShowErrorAndLockScroll();
-        document.getElementById('error_content').textContent=e.message;
+        document.getElementById('error_content').textContent=error_log;
         broke=true;
     })
     form.reset()
     if (!broke) {
+        document.getElementById('join_us').remove();
         log_trigger.addEventListener('click',SessionDestroy);
         log_trigger.removeEventListener('click',openModalAndLockScroll);
         closeModal();
@@ -576,11 +794,64 @@ async function SessionDestroy() {
     await fetch('./php/logReg.php');
     log_trigger.removeEventListener('click',SessionDestroy);
     log_trigger.addEventListener("click",openModalAndLockScroll);
+    log_trigger.querySelector('img').src='../images/account.png';
+    log_trigger.querySelector('p').textContent='';
 }
+
+/*бургер*/
+let anim_in_progress=false;
+ async function openMenu() {
+    if (!anim_in_progress) {
+        anime({
+            targets: '#menu_content',
+            top: 0,
+            opacity: [0, 1],
+            easing: 'linear',
+            duration: 250,
+            begin: function() {(anim_in_progress=true)}
+        })
+
+       await anime({
+            targets: '#menu',
+            width:220,
+            easing: 'linear',
+            duration: 250,
+            complete:function() {(anim_in_progress=false)}
+        })
+        document.getElementById('cross_click').addEventListener('click',closeMenu)
+        document.getElementById('cross_click').removeEventListener('click',openMenu)
+    }
+}
+async function closeMenu() {
+    if (!anim_in_progress) {
+        anime({
+            targets: '#menu_content',
+            top: -300,
+            opacity: [0, 1],
+            easing: 'linear',
+            duration: 250,
+            begin: function() {(anim_in_progress=true)}
+        })
+
+        await anime({
+            targets: '#menu',
+            width:80,
+            easing: 'linear',
+            duration: 250,
+            complete:function() {(anim_in_progress=false)}
+        })
+        document.getElementById('cross_click').addEventListener('click',openMenu)
+        document.getElementById('cross_click').removeEventListener('click',closeMenu)
+    }
+}
+document.getElementById('cross_click').addEventListener('click',openMenu);
+
+
 //обзоры
 let reviews=await fetch('../php/reviews.php').then(response=>{
-return response.json();
+    return response.json();
 })
+
 for(let review of reviews){
     let user=document.createElement('div');
     let time=document.createElement('div');

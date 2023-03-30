@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('link.php');
+
 if (isset($_POST['log'])){
     $login=$_POST['log'];
     $password=$_POST['pas'];
@@ -18,7 +19,6 @@ else if (isset($_POST['log_reg'])){
     $nickname=$_POST['nickname'];
     $mail=$_POST['mail'];
     $icon=$_POST['icon'];
-
     mysqli_query($link,"INSERT INTO `user` (`login`, `user_name`, `password`, `email`, `avatar_url`) VALUES ( '$login', '$nickname', '$password', '$mail', '$icon') ");
 
     $user_data=mysqli_query($link,"SELECT avatar_url,user_name,id FROM user where login='$login' and password=$password");

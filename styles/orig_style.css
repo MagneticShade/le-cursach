@@ -46,6 +46,7 @@ body{
 /* Эаголовок начало */
 
 header{
+    /*overflow: hidden;*/
     position: sticky;
     z-index: 2;
     top: 0;
@@ -59,6 +60,8 @@ header{
     align-items: center;
 }
 a{
+    font-size:20px;
+    font-family: "Inter",serif ;
     text-decoration: none;
     color: #E0E0E0;
 }
@@ -69,22 +72,10 @@ a{
     align-items: center;
     margin-left:10vw;
 }
-.chapters > a{
-    font-size:20px;
-    font-family: "Inter",serif ;
-}
-.dropdown>a{
-    font-size:20px;
-    font-family: "Inter",serif ;
-}
 #dropout{
     display: flex;
     flex-direction: column;
 
-}
-#dropout>a{
-    font-size:20px;
-    font-family: "Inter",serif ;
 }
 .dropbtn {
     text-shadow: 2px 2px #151517;
@@ -146,11 +137,39 @@ a{
 }
 /*меню*/
 #menu{
-display: none;
+    overflow: hidden;
+    display: none;
+    z-index:2;
+    justify-content: end;
+    align-items: center;
+}
+#cross{
+    z-index: 2;
 }
 #menu_content{
+    padding: 12px;
+    padding-top: 8vh;
+   display: none;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+    position: absolute;
+    top:-300px;
+    right: 0;
+    text-align: center;
+    background-color: #151517;
+    border: 2px solid rgb(182, 164, 22);
+
+}
+#menu_inside_content{
     position: relative;
-    
+    z-index: 3;
+    height: 200px;
+    display:flex;
+    align-items: center;
+    background-color: #151517;
+    justify-content: space-between;
+    flex-direction: column;
 }
 .ham {
     cursor: pointer;
@@ -186,32 +205,10 @@ display: none;
   .ham1.active .bottom {
     stroke-dashoffset: -138px;
   }
-@media screen and (max-width: 990px) {
-    #dropdown{
-        display: none;
-    }
-    #call_back{
-        display: none;
-    }
-    #call{
-        display: none;
-    }
-    #head_chapters{
-        justify-content: end;
-    }
-   }
-   @media screen and (max-width:1200px) {
-    #home{
-        display: none;
-    }
-    #about{
-        display: none;
-    }
-   }
+
 /* Первый экран*/
 
 #first_screen{
-    box-sizing: border-box;
     width: 100%;
     height: 92vh;
     padding-top:15vh;
@@ -451,6 +448,10 @@ dialog{
     background-color: rgba(21, 21, 23, 0.8);
 
 }
+/*читалка*/
+#reader{
+    padding: 20px;
+}
 /*окно ошибки*/
 #error_holder{
     display: flex;
@@ -463,11 +464,10 @@ dialog{
     letter-spacing: 5px;
     height: 40px;
 }
-/*форма входа*/
-
-#login{
-    overflow: hidden;
+#error_content{
+    text-align: center;
 }
+/*форма входа*/
 
 #login_content{
     box-sizing: content-box;
@@ -500,6 +500,13 @@ dialog{
     align-self: start;
     margin-bottom:10px;
 }
+.glow_up{
+    cursor: pointer;
+    height: 100%;
+}
+.chosen{
+    border: 4px solid rgba(215, 194, 24) ;
+}
 .text{
     height: 35px;
     font-size: 24px;
@@ -516,7 +523,16 @@ dialog{
 form{
     box-sizing: content-box;
 }
-
+.validate{
+    text-align:center;
+    width: 280px;
+}
+.allGreen{
+    background-color: #016501;
+}
+.allRed{
+    background-color: #750202;
+}
 .buttons{
     display: flex;
     flex-wrap: wrap;
@@ -534,7 +550,7 @@ form{
     width:260px ;
 }
 .input{
-    margin-bottom: 20px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -617,6 +633,7 @@ form{
 }
  
 #join_us_container>button{
+    outline: 5px solid rgba(215, 194, 24, 0.8);
     width: 340px;
     height: 70px;
     letter-spacing: 5px;
@@ -647,10 +664,6 @@ footer{
 #footer_holder>div{
     height: 180px;
 }
-#footer_holder>div>a{
-    font-size:20px;
-    font-family: "Inter",serif ;
-}
 #up{
     height: 50px !important;
 }
@@ -658,3 +671,38 @@ footer{
 #dropout>a{
     margin:5px 0;
 }
+/*@media screen and (max-width:670px){*/
+/*    #dropdown{*/
+/*        display: none;*/
+/*    }*/
+/*    #head_chapters{*/
+/*        justify-content: end;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 870px){*/
+/*    #call_back{*/
+/*        display: none;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 990px) {*/
+
+/*    #first_screen_align{*/
+/*        margin: 0;*/
+/*        align-self: center;*/
+/*    }*/
+
+/*}*/
+/*@media screen and (max-width:1200px) {*/
+/*    #menu,#menu_content{*/
+/*        display: flex;*/
+/*    }*/
+/*    #home{*/
+/*        display: none;*/
+/*    }*/
+/*    #about{*/
+/*        display: none;*/
+/*    }*/
+/*    #call{*/
+/*        display: none;*/
+/*    }*/
+/*}*/
